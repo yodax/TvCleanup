@@ -1,5 +1,7 @@
 namespace TvCleanup.Tests
 {
+    using System.IO.Abstractions;
+    using System.IO.Abstractions.TestingHelpers;
     using Autofac;
 
     public class ResolveDouble : IResolve
@@ -12,6 +14,8 @@ namespace TvCleanup.Tests
 
             builder.RegisterType<Application>().InstancePerLifetimeScope();
             builder.RegisterInstance(new OutputDouble()).As<AbstractOutput>();
+            builder.RegisterType<MockFileSystem>().As<IFileSystem>().InstancePerLifetimeScope();
+            builder.RegisterType<MediaFinder>();
 
             scope = builder.Build().BeginLifetimeScope();
         }

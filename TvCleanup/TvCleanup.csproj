@@ -39,6 +39,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Abstractions">
+      <HintPath>..\packages\System.IO.Abstractions.2.0.0.113\lib\net40\System.IO.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -48,11 +51,16 @@
   <ItemGroup>
     <Compile Include="AbstractOutput.cs" />
     <Compile Include="Application.cs" />
+    <Compile Include="Episode.cs" />
+    <Compile Include="FoundMedia.cs" />
     <Compile Include="IResolve.cs" />
+    <Compile Include="MediaFile.cs" />
+    <Compile Include="MediaFinder.cs" />
     <Compile Include="Output.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resolve.cs" />
+    <Compile Include="Show.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

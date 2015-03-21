@@ -1,5 +1,6 @@
 ﻿namespace TvCleanup.Tests
 {
+    using System.IO.Abstractions;
     using FluentAssertions;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -24,6 +25,8 @@
         {
             CheckForResolve<AbstractOutput>();
             CheckForResolve<Application>();
+            CheckForResolve<IFileSystem>();
+            CheckForResolve<MediaFinder>();
         }
 
         private void CheckForResolve<T>()

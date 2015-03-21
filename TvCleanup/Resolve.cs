@@ -1,5 +1,6 @@
 namespace TvCleanup
 {
+    using System.IO.Abstractions;
     using Autofac;
 
     public class Resolve : IResolve
@@ -12,6 +13,8 @@ namespace TvCleanup
 
             builder.RegisterType<Application>().InstancePerLifetimeScope();
             builder.RegisterInstance(new Output()).As<AbstractOutput>();
+            builder.RegisterType<FileSystem>().As<IFileSystem>();
+            builder.RegisterType<MediaFinder>();
 
             scope = builder.Build().BeginLifetimeScope();
         }

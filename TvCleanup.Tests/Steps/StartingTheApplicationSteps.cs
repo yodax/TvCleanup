@@ -6,26 +6,26 @@
     [Binding]
     public class StartingTheApplicationSteps
     {
+        private ResolveDouble resolve;
+        private Application application;
+
         [Given(@"an application")]
         public void GivenAnApplication()
         {
-            var resolve = new ResolveDouble();
-            ScenarioContext.Current.Add("Resolve", resolve);
+            resolve = new ResolveDouble();
 
-            ScenarioContext.Current.Add("Application", resolve.For<Application>());
+            application = resolve.For<Application>();
         }
 
         [When(@"I start the application")]
         public void WhenIStartTheApplication()
         {
-            var application = (Application) ScenarioContext.Current["Application"];
             application.Start();
         }
 
         [Then(@"on the screen I should see")]
         public void ThenOnTheScreenIShouldSee(string consoleOutput)
         {
-            var resolve = (IResolve) ScenarioContext.Current["Resolve"];
             var output = resolve.For<AbstractOutput>();
 
             output.Messages.Should().BeEquivalentTo(consoleOutput);
