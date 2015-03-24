@@ -8,6 +8,7 @@
         {
             Episodes = new List<Episode>();
         }
+
         public string Name { get; set; }
         public List<Episode> Episodes { get; private set; }
     }

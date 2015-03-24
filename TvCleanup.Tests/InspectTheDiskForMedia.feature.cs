@@ -9,89 +9,397 @@
 //      the code is regenerated.
 //  </auto-generated>
 // ------------------------------------------------------------------------------
+
 #region Designer generated code
+
+
 #pragma warning disable
+
 namespace TvCleanup.Tests
 {
     using TechTalk.SpecFlow;
-    
-    
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "1.9.0.77")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [Microsoft.VisualStudio.TestTools.UnitTesting.TestClassAttribute()]
     public partial class InspectTheDiskForMediaFeature
     {
-        
         private static TechTalk.SpecFlow.ITestRunner testRunner;
-        
-#line 1 "InspectTheDiskForMedia.feature"
-#line hidden
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassInitializeAttribute()]
         public static void FeatureSetup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext testContext)
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Inspect the disk for media", "\nMedia on disk should be identified per episode of a show. Per episode there migh" +
-                    "t be multiple media files present", ProgrammingLanguage.CSharp, ((string[])(null)));
+            var featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"),
+                "Inspect the disk for media",
+                "\nMedia on disk should be identified per episode of a show. Per episode there migh" +
+                "t be multiple media files present", ProgrammingLanguage.CSharp, ((string[]) (null)));
             testRunner.OnFeatureStart(featureInfo);
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.ClassCleanupAttribute()]
         public static void FeatureTearDown()
         {
             testRunner.OnFeatureEnd();
             testRunner = null;
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestInitializeAttribute()]
         public virtual void TestInitialize()
         {
-            if (((TechTalk.SpecFlow.FeatureContext.Current != null) 
-                        && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Inspect the disk for media")))
+            if (((TechTalk.SpecFlow.FeatureContext.Current != null)
+                 && (TechTalk.SpecFlow.FeatureContext.Current.FeatureInfo.Title != "Inspect the disk for media")))
             {
-                TvCleanup.Tests.InspectTheDiskForMediaFeature.FeatureSetup(null);
+                FeatureSetup(null);
             }
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCleanupAttribute()]
         public virtual void ScenarioTearDown()
         {
             testRunner.OnScenarioEnd();
         }
-        
+
         public virtual void ScenarioSetup(TechTalk.SpecFlow.ScenarioInfo scenarioInfo)
         {
             testRunner.OnScenarioStart(scenarioInfo);
         }
-        
+
         public virtual void ScenarioCleanup()
         {
             testRunner.CollectScenarioErrors();
         }
-        
+
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("One media file")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Inspect the disk for media")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Inspect the disk for media"
+            )]
         public virtual void OneMediaFile()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("One media file", ((string[])(null)));
+            var scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("One media file", ((string[]) (null)));
 #line 5
-this.ScenarioSetup(scenarioInfo);
+            this.ScenarioSetup(scenarioInfo);
 #line hidden
-            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
-                        "Filename"});
-            table1.AddRow(new string[] {
-                        "c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.mkv"});
+            var table1 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Filename"
+            });
+            table1.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.mkv"
+            });
 #line 6
- testRunner.Given("a file system", ((string)(null)), table1, "Given ");
+            testRunner.Given("a file system", ((string) (null)), table1, "Given ");
 #line 9
- testRunner.When("I look for media in c:\\media\\tv", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+            testRunner.When("I look for media in c:\\media\\tv", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "When ");
 #line 10
- testRunner.Then("1 media file for show Show and episode S01E01 should be found", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            testRunner.Then("there should be 1 show called show", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "Then ");
+#line 11
+            testRunner.And("there should be 1 episode S01E01", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "And ");
+#line 12
+            testRunner.And("there should be 1 media called Show.S01E01.720p.HDTV", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 13
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.mkv",
+                ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Two files for one media")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Inspect the disk for media"
+            )]
+        public virtual void TwoFilesForOneMedia()
+        {
+            var scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Two files for one media", ((string[]) (null)));
+#line 15
+            this.ScenarioSetup(scenarioInfo);
+#line hidden
+            var table2 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Filename"
+            });
+            table2.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.mkv"
+            });
+            table2.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.srt"
+            });
+#line 16
+            testRunner.Given("a file system", ((string) (null)), table2, "Given ");
+#line 20
+            testRunner.When("I look for media in c:\\media\\tv", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "When ");
+#line 21
+            testRunner.Then("there should be 1 show called show", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "Then ");
+#line 22
+            testRunner.And("there should be 1 episode S01E01", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "And ");
+#line 23
+            testRunner.And("there should be 1 media called Show.S01E01.720p.HDTV", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 24
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.mkv",
+                ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 25
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.srt",
+                ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Two files for two medias")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Inspect the disk for media"
+            )]
+        public virtual void TwoFilesForTwoMedias()
+        {
+            var scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Two files for two medias", ((string[]) (null)));
+#line 27
+            this.ScenarioSetup(scenarioInfo);
+#line hidden
+            var table3 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Filename"
+            });
+            table3.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.mkv"
+            });
+            table3.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.srt"
+            });
+            table3.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E01\\Show.S01E01.1080p.WEB-DL.mkv"
+            });
+            table3.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E01\\Show.S01E01.1080p.WEB-DL.srt"
+            });
+#line 28
+            testRunner.Given("a file system", ((string) (null)), table3, "Given ");
+#line 34
+            testRunner.When("I look for media in c:\\media\\tv", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "When ");
+#line 35
+            testRunner.Then("there should be 1 show called show", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "Then ");
+#line 36
+            testRunner.And("there should be 1 episode S01E01", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "And ");
+#line 37
+            testRunner.And("there should be 1 media called Show.S01E01.720p.HDTV", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 38
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.mkv",
+                ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 39
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.srt",
+                ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 40
+            testRunner.And("there should be 1 media called Show.S01E01.1080p.WEB-DL", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 41
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E01\\Show.S01E01.1080p.WEB-DL.mk" +
+                           "v", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 42
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E01\\Show.S01E01.1080p.WEB-DL.sr" +
+                           "t", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute(
+            "Two files for two medias for two shows with two episodes")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Inspect the disk for media"
+            )]
+        public virtual void TwoFilesForTwoMediasForTwoShowsWithTwoEpisodes()
+        {
+            var scenarioInfo =
+                new TechTalk.SpecFlow.ScenarioInfo("Two files for two medias for two shows with two episodes",
+                    ((string[]) (null)));
+#line 44
+            this.ScenarioSetup(scenarioInfo);
+#line hidden
+            var table4 = new TechTalk.SpecFlow.Table(new string[]
+            {
+                "Filename"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.mkv"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.srt"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E01\\Show.S01E01.1080p.WEB-DL.mkv"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E01\\Show.S01E01.1080p.WEB-DL.srt"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E02\\Show.S01E02.720p.HDTV.mkv"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E02\\Show.S01E02.720p.HDTV.srt"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E02\\Show.S01E02.1080p.WEB-DL.mkv"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show\\S01E02\\Show.S01E02.1080p.WEB-DL.srt"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show2\\S01E01\\Show2.S01E01.720p.HDTV.mkv"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show2\\S01E01\\Show2.S01E01.720p.HDTV.srt"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show2\\S01E01\\Show2.S01E01.1080p.WEB-DL.mkv"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show2\\S01E01\\Show2.S01E01.1080p.WEB-DL.srt"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show2\\S01E02\\Show2.S01E02.720p.HDTV.mkv"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show2\\S01E02\\Show2.S01E02.720p.HDTV.srt"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show2\\S01E02\\Show2.S01E02.1080p.WEB-DL.mkv"
+            });
+            table4.AddRow(new string[]
+            {
+                "c:\\media\\tv\\Show2\\S01E02\\Show2.S01E02.1080p.WEB-DL.srt"
+            });
+#line 45
+            testRunner.Given("a file system", ((string) (null)), table4, "Given ");
+#line 63
+            testRunner.When("I look for media in c:\\media\\tv", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "When ");
+#line 64
+            testRunner.Then("there should be 1 show called show", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "Then ");
+#line 65
+            testRunner.And("there should be 1 episode S01E01", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "And ");
+#line 66
+            testRunner.And("there should be 1 media called Show.S01E01.720p.HDTV", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 67
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.mkv",
+                ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 68
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E01\\Show.S01E01.720p.HDTV.srt",
+                ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 69
+            testRunner.And("there should be 1 media called Show.S01E01.1080p.WEB-DL", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 70
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E01\\Show.S01E01.1080p.WEB-DL.mk" +
+                           "v", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 71
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E01\\Show.S01E01.1080p.WEB-DL.sr" +
+                           "t", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 72
+            testRunner.And("there should be 1 episode S01E02", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "And ");
+#line 73
+            testRunner.And("there should be 1 media called Show.S01E02.720p.HDTV", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 74
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E02\\Show.S01E02.720p.HDTV.mkv",
+                ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 75
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E02\\Show.S01E02.720p.HDTV.srt",
+                ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 76
+            testRunner.And("there should be 1 media called Show.S01E02.1080p.WEB-DL", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 77
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E02\\Show.S01E02.1080p.WEB-DL.mk" +
+                           "v", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 78
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show\\S01E02\\Show.S01E02.1080p.WEB-DL.sr" +
+                           "t", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 79
+            testRunner.And("there should be 1 show called show2", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "And ");
+#line 80
+            testRunner.And("there should be 1 episode S01E01", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "And ");
+#line 81
+            testRunner.And("there should be 1 media called Show2.S01E01.720p.HDTV", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 82
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show2\\S01E01\\Show2.S01E01.720p.HDTV.mkv" +
+                           "", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 83
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show2\\S01E01\\Show2.S01E01.720p.HDTV.srt" +
+                           "", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 84
+            testRunner.And("there should be 1 media called Show2.S01E01.1080p.WEB-DL", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 85
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show2\\S01E01\\Show2.S01E01.1080p.WEB-DL." +
+                           "mkv", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 86
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show2\\S01E01\\Show2.S01E01.1080p.WEB-DL." +
+                           "srt", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 87
+            testRunner.And("there should be 1 episode S01E02", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)),
+                "And ");
+#line 88
+            testRunner.And("there should be 1 media called Show2.S01E02.720p.HDTV", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 89
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show2\\S01E02\\Show2.S01E02.720p.HDTV.mkv" +
+                           "", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 90
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show2\\S01E02\\Show2.S01E02.720p.HDTV.srt" +
+                           "", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 91
+            testRunner.And("there should be 1 media called Show2.S01E02.1080p.WEB-DL", ((string) (null)),
+                ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 92
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show2\\S01E02\\Show2.S01E02.1080p.WEB-DL." +
+                           "mkv", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
+#line 93
+            testRunner.And("there should be 1 file called c:\\media\\tv\\Show2\\S01E02\\Show2.S01E02.1080p.WEB-DL." +
+                           "srt", ((string) (null)), ((TechTalk.SpecFlow.Table) (null)), "And ");
 #line hidden
             this.ScenarioCleanup();
         }
     }
 }
+
 #pragma warning restore
+
 #endregion

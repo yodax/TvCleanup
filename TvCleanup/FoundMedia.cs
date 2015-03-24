@@ -8,6 +8,7 @@
         {
             Shows = new List<Show>();
         }
+
         public List<Show> Shows { get; private set; }
     }
 }

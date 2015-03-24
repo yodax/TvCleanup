@@ -2,9 +2,9 @@ namespace TvCleanup
 {
     using System;
 
-    public class Output : AbstractOutput
+    public class Output : IOutput
     {
-        protected override void WriteToDevice(string line)
+        public void WriteLine(string line)
         {
             Console.WriteLine(line);
         }

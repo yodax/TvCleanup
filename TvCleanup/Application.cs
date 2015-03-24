@@ -2,16 +2,16 @@ namespace TvCleanup
 {
     public class Application
     {
-        private readonly AbstractOutput abstractOutput;
+        private readonly IOutput output;
 
-        public Application(AbstractOutput abstractOutput)
+        public Application(IOutput output)
         {
-            this.abstractOutput = abstractOutput;
+            this.output = output;
         }
 
         public void Start()
         {
-            abstractOutput.WriteLine("Tv clean up");
+            output.WriteLine("Tv clean up");
         }
     }
 }

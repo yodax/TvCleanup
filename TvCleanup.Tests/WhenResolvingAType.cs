@@ -23,7 +23,7 @@
         [TestMethod]
         public void AllTypesShouldBeAssignable()
         {
-            CheckForResolve<AbstractOutput>();
+            CheckForResolve<IOutput>();
             CheckForResolve<Application>();
             CheckForResolve<IFileSystem>();
             CheckForResolve<MediaFinder>();

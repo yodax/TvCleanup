@@ -6,8 +6,8 @@
     [Binding]
     public class StartingTheApplicationSteps
     {
-        private ResolveDouble resolve;
         private Application application;
+        private ResolveDouble resolve;
 
         [Given(@"an application")]
         public void GivenAnApplication()
@@ -26,7 +26,7 @@
         [Then(@"on the screen I should see")]
         public void ThenOnTheScreenIShouldSee(string consoleOutput)
         {
-            var output = resolve.For<AbstractOutput>();
+            var output = resolve.For<IOutput>().As<OutputDouble>();
 
             output.Messages.Should().BeEquivalentTo(consoleOutput);
         }

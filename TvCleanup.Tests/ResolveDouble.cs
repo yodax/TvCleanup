@@ -13,7 +13,7 @@ namespace TvCleanup.Tests
             var builder = new ContainerBuilder();
 
             builder.RegisterType<Application>().InstancePerLifetimeScope();
-            builder.RegisterInstance(new OutputDouble()).As<AbstractOutput>();
+            builder.RegisterInstance(new OutputDouble()).As<IOutput>();
             builder.RegisterType<MockFileSystem>().As<IFileSystem>().InstancePerLifetimeScope();
             builder.RegisterType<MediaFinder>();
 

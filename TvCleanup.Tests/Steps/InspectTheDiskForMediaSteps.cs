@@ -9,8 +9,11 @@
     [Binding]
     public class InspectTheDiskForMediaSteps
     {
-        private ResolveDouble resolve;
+        private Episode foundEpisode;
         private FoundMedia foundMedia;
+        private Show foundShow;
+        private MediaCollection mediaCollection;
+        private ResolveDouble resolve;
 
         [Given(@"a file system")]
         public void GivenAFileSystem(Table table)
@@ -31,16 +34,45 @@
             foundMedia = mediaFinder.LookIn(directoryToLookIn);
         }
 
-        [Then(@"(.*) media file for show (.*) and episode (.*) should be found")]
-        public void ThenMediaFileForShowShowAndEpisodeSShouldBeFound(int nrOfMediaFilesForShows, string showName, string episode)
+        [Then(@"there should be (.*) show called (.*)")]
+        public void ThenThereShouldBeShowCalledShow(int numberOfShows, string showName)
         {
-            var foundShow = foundMedia.Shows.First(s => s.Name.Equals(showName, StringComparison.InvariantCultureIgnoreCase));
-            foundShow.Should().NotBeNull(" show was not found");
+            var foundShows =
+                foundMedia.Shows.Where(s => s.Name.Equals(showName, StringComparison.InvariantCultureIgnoreCase));
+            foundShows.Should().HaveCount(numberOfShows);
 
-            var foundEpisode = foundShow.Episodes.First(e => e.Identifier.Equals(episode, StringComparison.InvariantCultureIgnoreCase));
-            foundEpisode.Should().NotBeNull(" episode was not found");
+            foundShow = foundShows.First();
+        }
 
-            foundEpisode.MediaFiles.Count().Should().Be(nrOfMediaFilesForShows);
+        [Then(@"there should be (.*) episode (.*)")]
+        public void ThenThereShouldBeEpisodeS(int numberOfEpisodes, string episodeName)
+        {
+            var foundEpisodes =
+                foundShow.Episodes.Where(
+                    e => e.Identifier.Equals(episodeName, StringComparison.InvariantCultureIgnoreCase));
+
+            foundEpisodes.Should().HaveCount(numberOfEpisodes);
+            foundEpisode = foundEpisodes.First();
+        }
+
+        [Then(@"there should be (.*) media called (.*)")]
+        public void ThenThereShouldBeMediaCalled(int nrOfMedia, string mediaName)
+        {
+            var medias =
+                foundEpisode.Media.Where(
+                    m => m.Name.Equals(mediaName, StringComparison.InvariantCultureIgnoreCase));
+
+            medias.Should().HaveCount(nrOfMedia);
+
+            mediaCollection = medias.First();
+        }
+
+        [Then(@"there should be (.*) file called (.*)")]
+        public void ThenThereshouldBeFileCalledv(int nrOfFiles, string fileName)
+        {
+            var files = mediaCollection.Files.Where(f => f.Name.Equals(fileName, StringComparison.InvariantCultureIgnoreCase));
+
+            files.Should().HaveCount(nrOfFiles);
         }
     }
 }

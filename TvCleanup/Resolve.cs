@@ -12,7 +12,7 @@ namespace TvCleanup
             var builder = new ContainerBuilder();
 
             builder.RegisterType<Application>().InstancePerLifetimeScope();
-            builder.RegisterInstance(new Output()).As<AbstractOutput>();
+            builder.RegisterType<Output>().As<IOutput>();
             builder.RegisterType<FileSystem>().As<IFileSystem>();
             builder.RegisterType<MediaFinder>();
 

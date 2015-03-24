@@ -49,11 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractOutput.cs" />
+    <Compile Include="IOutput.cs" />
     <Compile Include="Application.cs" />
     <Compile Include="Episode.cs" />
     <Compile Include="FoundMedia.cs" />
     <Compile Include="IResolve.cs" />
+    <Compile Include="MediaCollection.cs" />
     <Compile Include="MediaFile.cs" />
     <Compile Include="MediaFinder.cs" />
     <Compile Include="Output.cs" />

@@ -1,11 +1,20 @@
 namespace TvCleanup.Tests
 {
+    using System.Collections.Generic;
     using System.Diagnostics;
 
-    public class OutputDouble : AbstractOutput
+    public class OutputDouble : IOutput
     {
-        protected override void WriteToDevice(string line)
+        public OutputDouble()
         {
+            Messages = new List<string>();
+        }
+
+        public IList<string> Messages { get; private set; }
+
+        public void WriteLine(string line)
+        {
+            Messages.Add(line);
             Debug.WriteLine(line);
         }
     }

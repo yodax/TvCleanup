@@ -6,9 +6,10 @@
     {
         public Episode()
         {
-            MediaFiles = new List<MediaFile>();
+            Media = new List<MediaCollection>();
         }
+
         public string Identifier { get; set; }
-        public List<MediaFile> MediaFiles { get; private set; }
+        public List<MediaCollection> Media { get; private set; }
     }
 }
