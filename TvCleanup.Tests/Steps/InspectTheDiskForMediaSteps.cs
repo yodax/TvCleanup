@@ -59,8 +59,8 @@
         public void ThenThereShouldBeMediaCalled(int nrOfMedia, string mediaName)
         {
             var medias =
-                foundEpisode.Media.Where(
-                    m => m.Name.Equals(mediaName, StringComparison.InvariantCultureIgnoreCase));
+                foundEpisode.MediaCollections.Where(
+                    m => m.Identifier.Equals(mediaName, StringComparison.InvariantCultureIgnoreCase));
 
             medias.Should().HaveCount(nrOfMedia);
 

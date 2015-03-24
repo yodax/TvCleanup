@@ -6,10 +6,10 @@
     {
         public Episode()
         {
-            Media = new List<MediaCollection>();
+            MediaCollections = new List<MediaCollection>();
         }
 
         public string Identifier { get; set; }
-        public List<MediaCollection> Media { get; private set; }
+        public List<MediaCollection> MediaCollections { get; private set; }
     }
 }

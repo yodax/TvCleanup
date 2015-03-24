@@ -18,12 +18,40 @@ namespace TvCleanup
         {
             var foundMedia = new FoundMedia();
 
-            foreach (var showDirectory in ShowDirectoriesOnDisk(directoryToLookIn))
+            foreach (var showDirectory in ShowDirectoriesIn(directoryToLookIn))
             {
-                foundMedia.Shows.Add(CreateShowFrom(showDirectory));
+                var show = CreateShowFrom(showDirectory);
+
+                foreach (var episodeDirectory in EpisodeDirectoriesIn(showDirectory))
+                {
+                    var episode = CreateEpisodeFrom(episodeDirectory);
+
+                    foreach (var mediaCollectionName in GetUniqueMediaCollectionsIn(episodeDirectory))
+                    {
+                        var mediaCollection = MediaCollectionFrom(mediaCollectionName);
+
+                        foreach (var fileBelongingToMediaCollection in FilesBelongingToMediaCollection(episodeDirectory, mediaCollection.Identifier))
+                        {
+                            mediaCollection
+                                .Files
+                                .Add(MediaFileFrom(fileBelongingToMediaCollection));
+                        }
+
+                        episode.MediaCollections.Add(mediaCollection);
+                    }
+
+                    show.Episodes.Add(episode);
+                }
+
+                foundMedia.Shows.Add(show);
             }
 
             return foundMedia;
+        }
+
+        private static MediaFile MediaFileFrom(string fileBelongingToMediaCollection)
+        {
+            return new MediaFile { Name = fileBelongingToMediaCollection };
         }
 
         private Show CreateShowFrom(string showDirectory)
@@ -33,14 +61,10 @@ namespace TvCleanup
                 Name = DirectoryName(showDirectory)
             };
 
-            foreach (var episodeDirectory in EpisodeDirectories(showDirectory))
-            {
-                show.Episodes.Add(CreateEpisodeFrom(episodeDirectory));
-            }
             return show;
         }
 
-        private IEnumerable<string> EpisodeDirectories(string showDirectory)
+        private IEnumerable<string> EpisodeDirectoriesIn(string showDirectory)
         {
             return fileSystem.Directory.GetDirectories(showDirectory);
         }
@@ -49,39 +73,30 @@ namespace TvCleanup
         {
             var episode = new Episode {Identifier = DirectoryName(episodeDirectory)};
 
-            foreach (
-                var mediaCollectionName in
-                    GetUniqueMediaCollections(episodeDirectory))
-            {
-                episode.Media.Add(MediaCollectionFrom(episodeDirectory, mediaCollectionName));
-            }
             return episode;
         }
 
-        private MediaCollection MediaCollectionFrom(string episodeDirectory, string mediaCollectionName)
+        private MediaCollection MediaCollectionFrom(string mediaCollectionName)
         {
-            var media = new MediaCollection {Name = mediaCollectionName};
-            foreach (var fileBelongingToMediaCollection in
-                    FilesBelongingToMediaCollection(episodeDirectory, media))
+            return new MediaCollection
             {
-                media.Files.Add(new MediaFile {Name = fileBelongingToMediaCollection});
-            }
-            return media;
+                Identifier = mediaCollectionName
+            };
         }
 
-        private IEnumerable<string> FilesBelongingToMediaCollection(string episodeDirectory, MediaCollection media)
+        private IEnumerable<string> FilesBelongingToMediaCollection(string episodeDirectory, string mediaCollectionIdentifier)
         {
-            return fileSystem.Directory.GetFiles(episodeDirectory, media.Name + ".*");
+            return fileSystem.Directory.GetFiles(episodeDirectory, mediaCollectionIdentifier + ".*");
         }
 
-        private IEnumerable<string> GetUniqueMediaCollections(string episodeDirectory)
+        private IEnumerable<string> GetUniqueMediaCollectionsIn(string episodeDirectory)
         {
             return fileSystem.Directory.GetFiles(episodeDirectory)
                 .Select(Path.GetFileNameWithoutExtension)
                 .Distinct();
         }
 
-        private IEnumerable<string> ShowDirectoriesOnDisk(string directoryToLookIn)
+        private IEnumerable<string> ShowDirectoriesIn(string directoryToLookIn)
         {
             return fileSystem.Directory.GetDirectories(directoryToLookIn);
         }

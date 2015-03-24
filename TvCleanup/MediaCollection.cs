@@ -9,7 +9,7 @@
             Files = new List<MediaFile>();
         }
 
-        public string Name { get; set; }
+        public string Identifier { get; set; }
         public List<MediaFile> Files { get; set; }
     }
 }
